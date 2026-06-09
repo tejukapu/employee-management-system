@@ -1,0 +1,21 @@
+Folder PATH listing for volume OS
+Volume serial number is E0C4-54BF
+C:.
+|   docker-compose.yml
+|   structure.txt
+|   
++---ansible
++---docs
++---employee-service
+|   +---app
+|   |   +---database
+|   |   +---models
+|   |   +---routes
+|   |   +---schemas
+|   |   \---services
+|   \---tests
++---kubernetes
++---logging
++---monitoring
++---scripts
+\---terraform
