@@ -29,12 +29,12 @@ pipeline {
         }
 
         stage('Debug') {
-    steps {
-        sh 'pwd'
-        sh 'ls -la'
-        sh 'find . -type f | head -50'
-    }
-}
+            steps {
+            sh 'pwd'
+            sh 'ls -la'
+            sh 'find . -type f | head -50'
+            }
+        }
         stage('Docker Login') {
             steps {
                 withCredentials([
