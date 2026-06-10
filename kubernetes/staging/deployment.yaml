@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: employee-app
+  namespace: staging
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: employee-app
+
+  template:
+
+    metadata:
+      labels:
+        app: employee-app
+
+    spec:
+
+      containers:
+
+      - name: employee-app
+
+        image: raviteja21k/employee-service:v1
+
+        ports:
+        - containerPort: 8000
+
+        env:
+
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: employee-config
+              key: DB_HOST
+
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: employee-config
+              key: DB_PORT
+
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: employee-config
+              key: DB_NAME
+
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: employee-secret
+              key: DB_USER
+
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: employee-secret
+              key: DB_PASSWORD
+
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+
+          initialDelaySeconds: 20
+
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+
+          initialDelaySeconds: 10
+
+        resources:
+
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+
+          limits:
+            cpu: "250m"
+            memory: "256Mi"
