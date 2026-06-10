@@ -1,0 +1,11 @@
+apiversion: v1
+kind: ConfigMap
+
+metadata:
+  name: employee-config
+  namespce: dev
+
+data:
+  DB_HOST: postgres-service
+  DB_PORT: "5432"
+  DB_NAME: hrdb
