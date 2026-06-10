@@ -1,5 +1,5 @@
-apiversion: v1
-kind: namespce
+apiVersion: v1
+kind: Namespace
 
 metadata:
 name: dev
