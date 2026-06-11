@@ -38,5 +38,6 @@ def home(request: Request):
 @app.get("/health")
 def health():
     return {
-        "status": "UP"
+        "status": "Healthy",
+        "version": "v2"
     }
