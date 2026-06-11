@@ -24,7 +24,7 @@ spec:
 
       - name: employee-app
 
-        image: raviteja21k/employee-service:v1
+        image: raviteja21k/employee-service:v2
 
         ports:
         - containerPort: 8000
