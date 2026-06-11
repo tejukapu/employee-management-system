@@ -24,7 +24,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $IMAGE_NAME:v1 employee-service/'
+                sh 'docker build -t $IMAGE_NAME:v2 employee-service/'
             }
         }
 
