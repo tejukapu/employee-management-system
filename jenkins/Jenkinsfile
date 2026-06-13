@@ -4,7 +4,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "raviteja21k/employee-service"
-        IMAGE_TAG  = "${BUILD_NUMBER}"
+        IMAGE_TAG = "${BUILD_NUMBER}"
     }
 
     stages {
@@ -15,25 +15,9 @@ pipeline {
             }
         }
 
-        stage('SonarQube Scan') {
-            steps {
-                script {
-                    echo "SonarQube Scan Stage"
-                }
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG employee-service/'
-            }
-        }
-
-        stage('Debug') {
-            steps {
-                sh 'pwd'
-                sh 'ls -la'
-                sh 'find . -type f | head -50'
             }
         }
 
