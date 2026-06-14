@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
+from prometheus_fastapi_instrumentator import Instrumentator
 from app.routes.employee import router as employee_router
 from app.database.db import Base
 from app.database.db import engine
@@ -13,6 +14,11 @@ app = FastAPI(
     version="1.0.0"
 )
 app.include_router(employee_router)
+
+# Initialize Prometheus instrumentation
+instrumentator = Instrumentator()
+instrumentator.instrument(app)
+instrumentator.expose(app, endpoint="/metrics")
 
 templates = Jinja2Templates(directory="app/templates")
 
