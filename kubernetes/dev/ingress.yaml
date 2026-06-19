@@ -9,7 +9,7 @@ spec:
   ingressClassName: nginx
 
   rules:
-  - host: employee.local
+  - host: dev.shivalayammtp.club
 
     http:
       paths:
